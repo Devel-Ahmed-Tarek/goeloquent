@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"gopkg.in/gomail.v2"
+	mail "github.com/go-mail/mail/v2"
 )
 
 // EmailConfig يحتوي على إعدادات البريد الإلكتروني
@@ -29,7 +29,7 @@ func NewEmailService(config EmailConfig) *EmailService {
 
 // SendEmail يرسل رسالة بريد إلكتروني إلى المستلم المحدد
 func (es *EmailService) SendEmail(to, subject, body string) error {
-	m := gomail.NewMessage()
+	m := mail.NewMessage()
 	if es.Config.FromName != "" {
 		m.SetHeader("From", m.FormatAddress(es.Config.FromAddress, es.Config.FromName))
 	} else {
@@ -39,10 +39,6 @@ func (es *EmailService) SendEmail(to, subject, body string) error {
 	m.SetHeader("Subject", subject)
 	m.SetBody("text/html", body)
 
-	d := gomail.NewDialer(es.Config.SMTPHost, es.Config.SMTPPort, es.Config.Username, es.Config.Password)
+	d := mail.NewDialer(es.Config.SMTPHost, es.Config.SMTPPort, es.Config.Username, es.Config.Password)
 	if err := d.DialAndSend(m); err != nil {
-		return fmt.Errorf("❌ Failed to send email: %v", err)
-	}
-	log.Println("✅ Email sent successfully!")
-	return nil
-}
+		return fmt.Errorf("❌ Failed to send email: %v", err
