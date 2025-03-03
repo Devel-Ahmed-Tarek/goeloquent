@@ -4,8 +4,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/username/goeloquent/config"     // تأكد من تعديل المسار حسب مشروعك
-	"github.com/username/goeloquent/goeloquent"   // للوصول إلى MigrateAllWithHistory
+	"github.com/Devel-Ahmed-Tarek/goeloquent/config"
+	"github.com/Devel-Ahmed-Tarek/goeloquent/goeloquent"
 )
 
 func main() {

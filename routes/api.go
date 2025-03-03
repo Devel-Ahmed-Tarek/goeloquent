@@ -1,8 +1,8 @@
 package routes
 
 import (
+	"github.com/Devel-Ahmed-Tarek/goeloquent/app/controllers"
 	"github.com/gin-gonic/gin"
-	"github.com/username/goeloquent/app/controllers" // تأكد من تعديل المسار حسب مشروعك
 )
 
 func SetupRoutes(router *gin.Engine) {
@@ -10,6 +10,6 @@ func SetupRoutes(router *gin.Engine) {
 	{
 		api.GET("/users/:id", controllers.GetUserWithPosts)
 		api.GET("/users", controllers.GetUsers)
-		api.GET("/products", controllers.GetProducts) // مثال على Route للمنتجات (يمكنك إضافته لاحقاً)
+		// يمكنك إضافة المزيد من الـ routes هنا، مثل /products
 	}
 }

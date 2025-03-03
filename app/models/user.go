@@ -6,6 +6,5 @@ type User struct {
 	Name   string `json:"name"`
 	Email  string `json:"email" gorm:"unique"`
 	Status string `json:"status"`
-	// علاقة HasMany مع Post
-	Posts []Post `json:"posts" gorm:"foreignKey:UserID"`
+	Posts  []Post `json:"posts" gorm:"foreignKey:UserID"`
 }

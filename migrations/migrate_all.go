@@ -4,7 +4,7 @@ import (
 	"log"
 	"time"
 
-	"https://github.com/Devel-Ahmed-Tarek/goeloquent/tree/main/app/models" // تأكد من تعديل المسار حسب مشروعك
+	"github.com/Devel-Ahmed-Tarek/goeloquent/app/models"
 )
 
 // MigrateAllWithHistory يقوم بترحيل جميع الموديلات مع تسجيلها في جدول MigrationHistory

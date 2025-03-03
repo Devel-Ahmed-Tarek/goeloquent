@@ -1,14 +1,16 @@
 package main
 
 import (
-	"log"
+	"bytes"
 	"fmt"
+	"log"
+	"path/filepath"
 
+	"github.com/Devel-Ahmed-Tarek/goeloquent/app/models"
+	"github.com/Devel-Ahmed-Tarek/goeloquent/config"
+	"github.com/Devel-Ahmed-Tarek/goeloquent/goeloquent"
+	"github.com/Devel-Ahmed-Tarek/goeloquent/routes"
 	"github.com/gin-gonic/gin"
-	"github.com/username/goeloquent/config"      // تأكد من تعديل المسار حسب مشروعك
-	"github.com/username/goeloquent/goeloquent"    // للوصول إلى وظائف المكتبة
-	"github.com/username/goeloquent/app/models"    // للوصول إلى النماذج
-	"github.com/username/goeloquent/routes"        // تعريف Routes
 )
 
 func main() {
@@ -83,8 +85,7 @@ func main() {
 	// تجربة التخزين: حفظ واسترجاع ملف
 	storageBase := "storage"
 	relativePath := "uploads/images"
-	// يمكنك استبدال هذا المثال بفتح ملف حقيقي باستخدام os.Open
-	// هنا مثال باستخدام بافر تجريبي لنص
+	// مثال: استخدام محتوى نصي كمثال (استبدله ببيانات ملف حقيقي)
 	fromContent := "هذا محتوى الملف التجريبي."
 	fileReader := bytes.NewBufferString(fromContent)
 	paths, err := goeloquent.SaveMediaFile(storageBase, relativePath, fileReader, "sample.jpg")
@@ -95,7 +96,8 @@ func main() {
 	}
 
 	// تجربة استرجاع نسخة من الملف (مثلاً النسخة المصغرة)
-	retrievedData, err := goeloquent.GetMediaFileVersion(storageBase, relativePath, filepath.Base(paths["original"]), "thumbnail")
+	origBase := filepath.Base(paths["original"])
+	retrievedData, err := goeloquent.GetMediaFileVersion(storageBase, relativePath, origBase, "thumbnail")
 	if err != nil {
 		log.Printf("❌ Error retrieving media file version: %v", err)
 	} else {

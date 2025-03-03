@@ -3,16 +3,16 @@ package controllers
 import (
 	"net/http"
 
+	"github.com/Devel-Ahmed-Tarek/goeloquent/app/models"
+	"github.com/Devel-Ahmed-Tarek/goeloquent/goeloquent"
 	"github.com/gin-gonic/gin"
-	"github.com/username/goeloquent/app/models"  // تأكد من تعديل المسار
-	"github.com/username/goeloquent/goeloquent"     // للوصول إلى دوال المكتبة مثل Paginate, ScopeActive, إلخ.
 )
 
 // GetUsers يقوم بإرجاع جميع المستخدمين مع دعم Pagination
 func GetUsers(c *gin.Context) {
 	var users []models.User
 	page := c.DefaultQuery("page", "1")
-	pageSize := c.DefaultQuery("page_size", "10")
+	pageSize := c.DefaultQuery("page_size", "5")
 
 	result, err := goeloquent.Paginate(goeloquent.DB, &models.User{}, &users, page, pageSize)
 	if err != nil {

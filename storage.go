@@ -71,7 +71,7 @@ func SaveMediaFile(basePath, relativePath string, file io.Reader, filename strin
 	}
 	result["original"] = origPath
 
-	// إذا كان الملف صورة، نقوم بإنشاء نسخة مصغرة
+	// إذا كان الملف صورة، إنشاء نسخة مصغرة
 	if mediaType == "images" {
 		img, format, err := image.Decode(bytes.NewReader(data))
 		if err != nil {
